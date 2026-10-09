@@ -22,7 +22,7 @@ def main() -> None:
             print(to_print)
         else:
             print("Error: Expression is empty or contains only whitespace.")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"Error: {e}")
 
 
