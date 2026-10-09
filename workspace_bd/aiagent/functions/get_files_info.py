@@ -1,6 +1,13 @@
 import os
 
 def get_files_info(working_directory: str, directory: str = ".") -> str:
+    if directory == ".":
+        dir_alias = "current"
+    else:
+        dir_alias = directory
+
+    print(f"Result for {dir_alias} directory:")
+
     try:
         working_dir_abs = os.path.abspath(working_directory)
 
@@ -13,7 +20,18 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
         if not os.path.isdir(target_dir):
             return f'Error: "{directory}" is not a directory'
 
-        return f'Success: "{directory}" is within the working directory'
+        dir_contents = os.listdir(target_dir)
+
+        results = []
+
+        for file in dir_contents:
+            file_path = target_dir+"/"+file
+            file_size = os.path.getsize(file_path)
+            dir_check = os.path.isdir(file_path)
+            results.append(f"- {file}: file_size={file_size}, is_dir={dir_check}")
+
+        return "\n".join(results)
+
 
     except Exception as e:
         return(f"Error: {e}")
