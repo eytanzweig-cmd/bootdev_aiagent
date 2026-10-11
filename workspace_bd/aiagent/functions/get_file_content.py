@@ -1,5 +1,6 @@
 import os
 
+
 def get_file_content(working_directory: str, file_path: str) -> str:
     try:
         working_dir_abs = os.path.abspath(working_directory)
