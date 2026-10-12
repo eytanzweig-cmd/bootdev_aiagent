@@ -24,7 +24,7 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
     else:
         dir_alias = directory
 
-    print(f"Result for {dir_alias} directory:")
+    results = [f"Result for {dir_alias} directory:"]
 
     try:
         working_dir_abs = os.path.abspath(working_directory)
@@ -39,8 +39,6 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
             return f'Error: "{directory}" is not a directory'
 
         dir_contents = os.listdir(target_dir)
-
-        results = []
 
         for file in dir_contents:
             file_path = target_dir+"/"+file
